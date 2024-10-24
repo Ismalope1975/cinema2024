@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasarela de Pago</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <h1>Pasarela de Pago</h1>
+    <div id="payment-form">
+        <h2>Detalles de Pago</h2>
+        <label for="card-number">Número de Tarjeta:</label>
+        <input type="text" id="card-number" maxlength="16">
+        <label for="card-expiry">Fecha de Expiración (MM/AA):</label>
+        <input type="text" id="card-expiry" maxlength="5">
+        <label for="card-cvc">CVC:</label>
+        <input type="text" id="card-cvc" maxlength="3">
+        <button onclick="processPayment()">Pagar</button>
+    </div>
+    <script src="./js/pasarela.js"></script>
+</body>
+</html>

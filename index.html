@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <script src="https://kit.fontawesome.com/6ca6d92978.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/estilos.css">
+
+  <title>Buscador de Películas</title>
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./images/pngegg (2).png" alt="Logo de Cinema2024" width="200" height="90">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-success" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-success" id="botonreserva" href="./pages/cartelera.html">Cartelera</a>
+          </li>
+          <li class="nav-item">
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-success disabled" href="#" tabindex="-1" aria-disabled="true">Novedades</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-success disabled" href="#" tabindex="-1" aria-disabled="true">Sobre Nosotros</a>
+        </li>   
+        </ul>
+
+        <!-- Formulario de Login en el header -->
+        <form id="loginForm" class="d-flex align-items-center">
+          <input class="form-control me-2" type="text" id="cedula" placeholder="Cédula" aria-label="Cédula">
+          <input class="form-control me-2" type="password" id="password" placeholder="Contraseña" aria-label="Contraseña">
+          <button class="btn btn-outline-success" type="submit">Login</button>
+        </form>
+
+        <!-- Contenedor para mostrar información del usuario logueado -->
+        <div id="userInfo" class="d-none d-flex align-items-center user-info">
+          <span class="nav-link">Bienvenido: <span id="userName"></span></span>
+          <button id="editButton" class="btn btn-link nav-link">Editar</button>
+          <button id="logoutButton" class="btn btn-link nav-link">Salir</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Carrusel de películas -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators" id="carouselIndicators">
+      <!-- Los indicadores del carrusel se insertarán aquí -->
+    </div>
+    <div class="carousel-inner" id="carouselItems">
+      <!-- Los elementos del carrusel se insertarán aquí -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Buscador de Películas</h2>
+    <input type="text" id="SearchInput" class="form-control mb-4" placeholder="Buscar películas...">
+
+    <!-- Controles de filtro -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <input type="number" id="YearInput" class="form-control" placeholder="Año">
+      </div>
+      <div class="col-md-4">
+        <select id="TypeSelect" class="form-control">
+          <option value="">Género</option>
+          <option value="movie">Película</option>
+          <option value="series">Serie</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <button id="FilterButton" class="btn btn-primary btn-block">Aplicar Filtros</button>
+      </div>
+    </div>
+
+    <!-- Tarjetas de películas -->
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4" id="movieCards">
+      <!-- Las tarjetas de las películas se insertarán aquí -->
+    </div>
+
+    <!-- Contenedor de paginación -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center" id="pagination">
+        <!-- Los botones de paginación se insertarán aquí -->
+      </ul>
+    </nav>
+
+    <ul id="results" class="list-unstyled mt-4"></ul>
+  </div>
+</main>
+
+<footer style="background-color: #343a40; color: white;" class="mt-5">
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Contacto</h5>
+        <p class="mb-1">Dirección: Avenida Santa Rita, Canelones, Uruguay</p>
+        <p class="mb-1">Teléfono: +598 996801984</p>
+        <p class="mb-1">Email: contacto@cinema2024.com</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h5>Síguenos</h5>
+        <ul class="list-unstyled d-flex justify-content-center">
+          <li><a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 d-flex flex-column align-items-end">
+        <h5>Enlaces Útiles</h5>
+        <ul class="list-unstyled text-end">
+          <li><a href="#" class="text-white">Política de Privacidad</a></li>
+          <li><a href="#" class="text-white">Términos y Condiciones</a></li>
+          <li><a href="#" class="text-white">Ayuda</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <p>© Cinema2024 Ismael Lopez. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/cine.js"></script>
+<script src="./js/login.js"></script>
+
+</body>
+</html>

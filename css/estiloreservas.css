@@ -1,0 +1,91 @@
+body {
+    background: linear-gradient(to bottom, #000000cc, rgba(28, 28, 28, 0.8)), url('../images/overhead-view-tangled-film-stripes-isolated-white-backdrop.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0; /* Color de texto principal */
+  }
+
+h1 {
+    color: #333;
+}
+.col {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+#seating-chart {
+    display: grid;
+    grid-template-columns: repeat(20, 40px);
+    gap: 5px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border: 1px solid #000;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.seat:hover {
+    background-color: #ddd;
+}
+
+.seat.reserved {
+    background-color: #f00;
+}
+
+.seat.selected {
+    background-color: #0f0;
+}
+
+.seat span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: #000;
+}
+
+#payment-form, #manage-reservations {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"], input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
