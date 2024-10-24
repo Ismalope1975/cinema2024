@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('./pelislocales.json')
+    fetch('../pelislocales.json')
         .then(response => response.json())
         .then(data => {
             // Guardar los datos en localStorage
@@ -21,7 +21,7 @@ function mostrarPeliculas(peliculas) {
         card.className = 'col';
         card.innerHTML = `
             <div class="card h-100">
-                <img src="../${pelicula.img}" class="card-img-top" alt="${pelicula.nombre}">
+                <img src="${pelicula.img}" class="card-img-top" alt="${pelicula.nombre}">
                 <div class="card-body">
                     <h5 class="card-title">${pelicula.nombre}</h5>
                     <p class="card-text">Año: ${pelicula.año}</p>
