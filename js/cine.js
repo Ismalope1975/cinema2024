@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('../pelislocales.json')
+    fetch('./pelislocales.json')
         .then(response => response.json())
         .then(data => {
             // Guardar los datos en localStorage
